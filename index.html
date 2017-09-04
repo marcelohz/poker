@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Poker</title>
+</head>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<body onload="con()">
+
+<script type="text/javascript">
+    function con() {
+
+        var url = "ws://localhost:1111/";
+        const ws = new WebSocket(url);
+
+        ws.addEventListener('open', function() {
+            console.log('client conectado');
+        });
+
+    }
+</script>
+
+
+</body>
+</html>
