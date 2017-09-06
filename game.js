@@ -1,7 +1,12 @@
 var p1Cards = [];
 var pcCards = [];
 
-
+var states = {
+    BEGIN: 0,
+    MOD: 1,
+    ADMIN: 2
+};
+var state;
 const fullDeck = [
     {full: 'S1', suit: 'S', num: '1'},
     {full: 'S2', suit: 'S', num: '2'},
@@ -55,12 +60,14 @@ const fullDeck = [
     {full: 'D11', suit: 'D', num: '11'},
     {full: 'D12', suit: 'D', num: '12'},
     {full: 'D13', suit: 'D', num: '13'}
-
+]
 var deck = fullDeck;
+
+
 
 function dealCards() {
     var i;
-    for(i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         var index = parseInt(Math.random() * deck.length);
         p1Cards.push(deck[index]);
         deck.splice(index, 1);
@@ -70,12 +77,20 @@ function dealCards() {
     }
 }
 
-//start();
+// start();
 
 function start() {
     dealCards();
-    console.log(p1Cards)
-    console.log(pcCards)
+    //console.log(p1Cards)
+    //console.log(pcCards)
 }
 
 
+module.exports = {
+    dealCards: dealCards,
+    p1Cards: p1Cards,
+    pcCards: pcCards,
+    state: state,
+    states: states,
+    fullDeck: fullDeck
+}

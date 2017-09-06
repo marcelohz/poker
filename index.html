@@ -6,7 +6,7 @@
 </head>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
 
 <body onload="con()">
 
@@ -20,7 +20,26 @@
             console.log('client conectado');
         });
 
+        ws.addEventListener('message', function(msg) {
+            console.log(msg);
+        });
+
+
+
+        ws.send('BEGIN');
     }
+
+    function parse(msg) {
+        switch (msg.split(':')[0]) {
+            case 'HANDP1':
+                console.log('p1 hand:' + msg.split(':').splice(0, 1));
+                break;
+            case 'HANDPC':
+                console.log('pc hand:' + msg.split(':').splice(0, 1));
+                break;
+        }
+    }
+
 </script>
 
 
